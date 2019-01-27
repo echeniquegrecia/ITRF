@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+
+<div class="container">
+    {% if arguments['error'] == False %}
+        <div class="alert alert-success in text-center" role="alert">
+            <strong>Transformación exitosa!</strong> Los resultados fueron enviados a {{  arguments['email'] }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% elif arguments['error'] == True %}
+        <div class="alert alert-danger in text-center" role="alert">
+            <strong>¡Ups! Parece que algo ha salido mal.</strong> Por favor revise los datos e intente nuevamente.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    {% endif %}
+    <div class="row justify-content-center">
+    <form method="post" enctype=multipart/form-data>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Cargar archivo con los datos (extension .xlsx)</label>
+            <input name = "file" type="file" class="form-control-file" id="exampleFormControlFile1" required>
+        </div>
+        <div class="form-group">
+        <div class="form-row">
+             <div class="col">
+                <label for="exampleFormControlSelect1">ITRF Inicial</label>
+                 <select name = "itrf_begin" class="form-control" id="exampleFormControlSelect1" required>
+                     <option>---</option>
+                     <option>ITRF2008</option>
+                 </select>
+             </div>
+            <div class="col">
+                <label for="exampleInputEmail1">Epoca Inicial</label>
+                <input name = "epoch_begin" type="text" class="form-control" placeholder="yyyy.yyyy" required>
+            </div>
+        </div>
+            </div>
+         <div class="form-group">
+                <div class="form-row">
+             <div class="col">
+                <label for="exampleFormControlSelect1">ITRF Final</label>
+                 <select name = "itrf_final" class="form-control" id="exampleFormControlSelect1" required>
+                     <option>---</option>
+                     <option>ITRF1994</option>
+                 </select>
+             </div>
+            <div class="col">
+                <label for="exampleInputEmail1">Epoca Final</label>
+                <input name = "epoch_final" type="text" class="form-control"  placeholder="yyyy.yyyy" required>
+            </div>
+        </div>
+             </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Modelo de Velocidad</label>
+            <select name = "velocity" class="form-control" id="exampleFormControlSelect1" required>
+              <option>---</option>
+              <option>VEMOS2009</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Correo electronico</label>
+            <input name = "email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+        </div>
+        <div class="row justify-content-center">
+          <button type="submit" class="btn btn-primary" value="Submit">Transformar</button>
+        </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

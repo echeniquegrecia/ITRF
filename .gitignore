@@ -1,0 +1,8 @@
+venv/
+client/__pycache__/
+client/.idea/
+api/__pycache__/
+api/.idea/
+api/controllers/velocity/velocity_model/vemos2009_vx.grd
+api/controllers/velocity/velocity_model/vemos2009_vy.grd
+api/controllers/velocity/velocity_model/vemos2009_vz.grd
